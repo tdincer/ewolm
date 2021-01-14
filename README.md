@@ -5,7 +5,6 @@ EWOLM is a python package to optimize the weights of an ensemble of machine lear
 
 #### Install
 
----
 
 ```python
 pip install ewolm
@@ -15,7 +14,6 @@ pip install ewolm
 
 #### Install Dependencies
 
----
 
 ```python
 conda install numpy autograd scipy
@@ -25,7 +23,6 @@ conda install numpy autograd scipy
 
 #### Example
 
----
 
 ```python
 from ewolm import ewolm
@@ -41,7 +38,6 @@ ewolm(y_true, y_pred)
 
 #### Metric
 
-----
 
 The `metric` keyword takes any differentiable numpy function. The following metrics are readily available in the package:
 
