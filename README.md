@@ -9,9 +9,9 @@ In machine learning, blending predictions from a number of models yields a bette
 EWOLM finds the optimum weights for a linear blending of models, optimizing the following Lagrangian:
 
 
-$$
+```math
 L(y_t, y_p, w) = f\left(y_t, \sum_{i=1}^{N} y_{pi}w_i \right) - \lambda \left(1-\sum_{i=0}^N w_i\right)
-$$
+```
 
 
 
