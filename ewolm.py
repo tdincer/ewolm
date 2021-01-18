@@ -34,8 +34,8 @@ class RMSE:
         pass
 
     def __call__(self, y_true, y_pred):
-        y_true = anp.array(y_true)
-        y_pred = anp.array(y_pred)
+        y_true = anp.array(y_true).ravel()
+        y_pred = anp.array(y_pred).ravel()
         return anp.sqrt(anp.mean((y_true - y_pred)**2.))
 
 
@@ -66,7 +66,7 @@ class ewolm:
         ws = anp.array(params[:-1])
         _lambda = params[-1]
         oof_blend = self.blend_oofs(self.y_pred, ws)
-        return self.metric(self.y_true, oof_blend) - _lambda * (ws.sum() - 1.)
+        return self.metric(self.y_true, oof_blend) - _lambda * (1. - np.sum(np.abs(ws)))
 
     def partial_derivatives(self, params):
         """
@@ -93,6 +93,10 @@ class ewolm:
 
         self.weights = np.float32(pars[:-1])
         self._lambda = np.float32(pars[-1])
+
+        if np.any([self.weights < 0]):
+            print('Caution: There are negative weights in the solution!')
+
         print('Optimum Weights:', self.weights.tolist())  # Format self.weights
         oof_b = self.blend_oofs(self.y_pred, self.weights)
         self.optimized_cv = self.metric(y_true, oof_b)
