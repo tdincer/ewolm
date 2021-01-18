@@ -1,6 +1,0 @@
-README.md
-setup.py
-ewolm.egg-info/PKG-INFO
-ewolm.egg-info/SOURCES.txt
-ewolm.egg-info/dependency_links.txt
-ewolm.egg-info/top_level.txt
